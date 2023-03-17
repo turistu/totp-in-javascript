@@ -1,0 +1,8 @@
+{
+	"manifest_version": 2,
+	"name": "TOTP",
+	"version": "1.2",
+	"browser_specific_settings": { "gecko": { "id": "totp@ohzd.od" } },
+	"browser_action": { "default_popup": "popup.html" },
+	"icons": { "128": "totp.png" }
+}

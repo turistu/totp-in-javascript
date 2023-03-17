@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<title>a simple TOTP generator</title>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<style>
+input:invalid { outline-style: solid; outline-color: red; border-color: red; }
+input:invalid + ::after {
+	color: red;
+	font-weight: bold;
+	content: 'ERROR: only letters and digits from 2 to 7 allowed';
+}
+#code { font-family: monospace; font-size: 18pt; letter-spacing: .15em; }
+form > * { display: block; margin-top: 2% }
+input[type=password], input[type=text] { width: 18em }
+input:not([type=checkbox]) { display: block; font-size: 12pt; margin-top: .2em }
+</style>
+<form id=form>
+	<label>User
+		<input type=text>
+	</label>
+	<label>Shared Key&nbsp;&nbsp;<input type=checkbox id=show>show
+		<input id=key autocomplete=current-password type=password pattern="[a-zA-Z2-7\s-]+"><d></d>
+	</label>
+	<p><input type=submit value="Generate TOTP (and copy it to clipboard)">
+	<p id=code>XXXXXX
+</form>
