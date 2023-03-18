@@ -3,10 +3,9 @@
 <meta charset=utf-8>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <style>
-input:invalid { outline-style: solid; outline-color: red; border-color: red }
-input:invalid + ::after {
-	color: red;
-	font-weight: bold;
+input:invalid { background-color: red; color: pink }
+#error { color: red; font-weight: bold; height: 1em }
+input:invalid ~ #error:empty::after {
 	content: 'ERROR: only letters and digits from 2 to 7 allowed';
 }
 #code { font-family: monospace; font-size: 18pt; letter-spacing: .15em }
@@ -22,7 +21,7 @@ input:not([type=checkbox]) {
 		<input type=text>
 	</label>
 	<label>Shared Key&nbsp;&nbsp;<input type=checkbox id=show>show
-		<input id=key autocomplete=current-password type=password pattern="[a-zA-Z2-7\s]+"><div></div>
+		<input id=key autocomplete=current-password type=password pattern="[a-zA-Z2-7\s]+"><div id=error></div>
 	</label>
 	<div id=code>XXXXXX</div>
 	<input type=button id=generate value="Generate TOTP (and copy it to clipboard)">
