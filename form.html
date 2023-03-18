@@ -3,24 +3,28 @@
 <meta charset=utf-8>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <style>
-input:invalid { outline-style: solid; outline-color: red; border-color: red; }
+input:invalid { outline-style: solid; outline-color: red; border-color: red }
 input:invalid + ::after {
 	color: red;
 	font-weight: bold;
 	content: 'ERROR: only letters and digits from 2 to 7 allowed';
 }
-#code { font-family: monospace; font-size: 18pt; letter-spacing: .15em; }
-form > * { display: block; margin-top: 2% }
-input[type=password], input[type=text] { width: 18em }
-input:not([type=checkbox]) { display: block; font-size: 12pt; margin-top: .2em }
+#code { font-family: monospace; font-size: 18pt; letter-spacing: .15em }
+form > * { display: block; margin-bottom: 1em }
+input[type=password], input[type=text] { width: 100%; max-width: 25em }
+input:not([type=checkbox]) {
+	display: block; font-size: 110%; margin-top: .2em;
+}
 </style>
-<form id=form>
+<iframe name=fram style=display:none></iframe>
+<form target=fram autocomplete=on>
 	<label>User
 		<input type=text>
 	</label>
 	<label>Shared Key&nbsp;&nbsp;<input type=checkbox id=show>show
-		<input id=key autocomplete=current-password type=password pattern="[a-zA-Z2-7\s-]+"><d></d>
+		<input id=key autocomplete=current-password type=password pattern="[a-zA-Z2-7\s]+"><div></div>
 	</label>
-	<p><input type=submit value="Generate TOTP (and copy it to clipboard)">
-	<p id=code>XXXXXX
+	<div id=code>XXXXXX</div>
+	<input type=button id=generate value="Generate TOTP (and copy it to clipboard)">
+	<input type=submit value="Save the key (with the browser's password manager)">
 </form>
