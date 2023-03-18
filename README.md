@@ -15,7 +15,7 @@ eg <code>TK7P33KPE527ZTOX</code> (github) or <code>opid zgaw quda ip7q tj3z izo7
 is to help you save and autocomplete different keys using the browser's
 password manager.
 
-<p>This could be packaged into an xpi firefox browser extension, which will
+<p>This could be packaged into an <a href=https://addons.mozilla.org/en-US/firefox/addon/totp/>xpi firefox browser extension</a>, which will
 offer the convenience of generating the TOTP (for a key you have saved)
 directly from a toolbar popup instead of having to switch to another tab.
 The xpi does not do anything more than that and does not include any content
