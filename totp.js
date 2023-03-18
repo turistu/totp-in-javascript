@@ -16,15 +16,17 @@ Number.prototype.fmt = function (base, width){
 	return this.toString(base).padStart(width, '0')
 }
 function unbase32(s){
-	var t = /[^a-zA-Z2-7\s-]/.exec(s);
-	if(t) throw `bad char '${t}' in key`;
-	t = s.toLowerCase().match(/[a-z2-7]/g).map(c => "abcdefghijklmnopqrstuvwxyz234567".indexOf(c).fmt(2, 5)).join("");
-	if(t.length < 8 || t.length % 8)
-		throw `bad ${t.length} bits key length`;
+	const t = s?.toLowerCase().match(/\S/g)?.map(c => {
+		const i = "abcdefghijklmnopqrstuvwxyz234567".indexOf(c);
+		if(i < 0) throw `bad char '${c}' in key`;
+		return i.fmt(2, 5);
+	}).join("");
+	if(!t) throw `empty key`;
+	if(t.length & 7) throw `bad ${t.length} bits key length`;
 	return new Uint8Array(t.match(/.{8}/g).map(d => parseInt(d, 2)));
 }
 function pack64bu(v){
-	var b = new ArrayBuffer(8), d = new DataView(b);
+	let b = new ArrayBuffer(8), d = new DataView(b);
 	d.setUint32(0, Math.floor(v / 4294967296));
 	d.setUint32(4, v % 4294967296);
 	return new Uint8Array(b);
