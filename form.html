@@ -9,6 +9,7 @@ input:invalid ~ #error:empty::after {
 	content: 'ERROR: only letters and digits from 2 to 7 allowed';
 }
 #code { font-family: monospace; font-size: 18pt; letter-spacing: .15em }
+#code:empty::before { content: 'XXXXXX' }
 form > * { display: block; margin-bottom: 1em }
 input[type=password], input[type=text] { width: 100%; max-width: 25em }
 input:not([type=checkbox]) {
@@ -23,7 +24,7 @@ input:not([type=checkbox]) {
 	<label>Shared Key&nbsp;&nbsp;<input type=checkbox id=show>show
 		<input id=key autocomplete=current-password type=password pattern="[a-zA-Z2-7\s]+"><div id=error></div>
 	</label>
-	<div id=code>XXXXXX</div>
+	<div id=code></div>
 	<input type=button id=generate value="Generate TOTP (and copy it to clipboard)">
 	<input type=submit value="Save the key (with the browser's password manager)">
 </form>
