@@ -3,18 +3,17 @@
 <meta charset=utf-8>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <style>
-input, d { display: block; margin: .5em }
+input, p { display: block; margin: .5em }
 input[type=password] { display: none }
 #code { fost-family: monospace }
 a { float: right }
 </style>
-<form id=form>
-<input id=user name=user>
+<form>
+<input>
 <input id=key type=password autocomplete=current-password>
 </form>
-<d>
-	<span id=code>XXXXXX</span>
-	<a href=page.html target=_blank>add key</a>
-</d>
+<p>
+<span id=code>XXXXXX</span>
+<a href=page.html target=_blank>add key</a>
 <script src=totp.js></script>
 <script src=page.js></script>
