@@ -6,10 +6,12 @@ function unbase32x(s){
 		p = c.match(/=/g).length; return '';
 	}).join('');
 	if(!t) throw 'empty key';
+	print(t.match(/.{5}/g).join(""));
+	print(t.match(/.{8}/g).join(""));
 	if(p){
 		if(p > 6 || t.length + p * 5 & 7) throw 'bogus padding of key';
 		if((t.length & 7) > 4 || t.substring(t.length & ~7) - 0)
-			throw 'overlong base32 encoding of key';
+			throw 'overstuffed base32 encoding of key';
 	}else if(t.length & 7)
 		throw `bad ${t.length} bits key length`;
 	return new Uint8Array(t.match(/.{8}/g).map(d => parseInt(d, 2)));
