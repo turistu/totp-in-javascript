@@ -5,7 +5,6 @@ function unbase32x(s){
 		if(/[^=\s]/.test(c)) throw `'${c}' not allowed in base32`;
 		p = c.match(/=/g).length; return '';
 	}).join('');
-	if(!t) throw 'empty key';
 	if(p){
 		if(p > 6 || t.length + p * 5 & 7) throw 'bogus padding of key';
 		if((t.length & 7) > 4 || t.substring(t.length & ~7) - 0)
