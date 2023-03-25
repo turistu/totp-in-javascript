@@ -1,8 +1,8 @@
 all:	totp.html totp.xpi
-page.html:	form.html
+page.html:	form.html page.js totp.js
 	{ cat form.html && \
 	  printf '<script src=%s></script>\n' totp.js page.js; } > $@
-totp.html:	form.html README.md page.js totp.js Makefile
+totp.html:	form.html README.md page.js totp.js
 	{ cat form.html README.md && \
 	  printf '<hr>\n<script style="display: block; white-space: pre; font-family: monospace">\n' && \
 	  cat totp.js && \
@@ -20,3 +20,4 @@ clean:
 	rm -f page.html
 install:	totp.xpi
 	firefox totp.xpi
+page.html totp.html totp.xpi:	Makefile
