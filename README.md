@@ -3,16 +3,9 @@ using the browser's <a href=https://developer.mozilla.org/en-US/docs/Web/API/Sub
 It should do the exactly same thing as the google authenticator or any other TOTP generating app.
 
 <p>The javascript code does not send to or fetch any data from anywhere
-remotely, and <a href=https://turistu.github.io/totp.html>this page</a> should
+remotely, and the <a href=https://turistu.github.io/totp.html>demo page</a> should
 work the same when served over https, saved locally or used inside a browser
 extension.
-
-<p>The TOTP shared key should be in <a href=https://datatracker.ietf.org/doc/html/rfc4648#section-6>base32</a> format,
-eg <code>TK7P33KPE527ZTOX</code> (github) or <code>opid zgaw quda ip7q tj3z izo7 oemp t7dm</code> (google).
-
-<p>The <q>User</q> field is not used for generating the OTP, its only purpose
-is to help you save and autocomplete different keys using the browser's
-password manager.
 
 <p>I have also packaged this into an <a href=https://addons.mozilla.org/en-US/firefox/addon/totp/>xpi firefox browser extension</a>, which offers the
 convenience of generating the TOTP (for a key you have saved) directly from

@@ -11,9 +11,14 @@ input:invalid ~ #error:empty::after {
 #code { font-family: monospace; font-size: 18pt; letter-spacing: .15em }
 #code:empty::before { content: 'XXXXXX' }
 form > * { display: block; margin-bottom: 1em }
-input[type=password], input[type=text] { width: 100%; max-width: 25em }
+input[type=password], input[type=text] {
+	width: 100%; max-width: 25em; min-width: 5em; box-sizing: border-box
+}
 input:not([type=checkbox]) {
 	display: block; font-size: 110%; margin-top: .2em;
+}
+script[data-visible] {
+	display: block; white-space: pre; font-family: monospace;
 }
 </style>
 <iframe name=fram style=display:none></iframe>
@@ -28,3 +33,6 @@ input:not([type=checkbox]) {
 	<input type=button id=generate value="Generate TOTP (and copy it to clipboard)">
 	<input type=submit value="Save the key (with the browser's password manager)">
 </form>
+The TOTP shared key should be in base32 format,
+eg <code>TK7P33KPE527ZTOX</code> (github) or <code>opid zgaw quda ip7q tj3z izo7 oemp t7dm</code> (google).
+<p>The <q>User</q> field is not used for computing the TOTP; its only purpose is to act as a label for the password manager.
