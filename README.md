@@ -2,7 +2,7 @@
 using the browser's <a href=https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto>crypto API</a>.
 It should do the exactly same thing as the google authenticator or any other TOTP generating app.
 
-<p>The javascript code does not send to or fetch any data from anywhere
+<p>The <a href=totp.js>javascript code</a> does not send to or fetch any data from anywhere
 remotely, and the <a href=https://turistu.github.io/totp.html>demo page</a> should
 work the same when served over https, saved locally or used inside a browser
 extension.
