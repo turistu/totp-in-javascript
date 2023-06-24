@@ -1,4 +1,4 @@
-function qs(s){ let e = document.querySelector(s); return e ? e : {} }
+function qs(s){ return document.querySelector(s) || {} }
 function generate_code(e){
 	totp(qs('#key').value).then(c => {
 		qs('#code').textContent = c;
