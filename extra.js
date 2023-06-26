@@ -1,7 +1,7 @@
 function unbase32x(s){
 	let p = 0, t = s?.toLowerCase().match(/=.*|\S/gs)?.map(c => {
 		const i = 'abcdefghijklmnopqrstuvwxyz234567'.indexOf(c);
-		if(i >= 0) return i.fmt(2, 5);
+		if(i >= 0) return fmt(2, 5, i);
 		if(/[^=\s]/.test(c)) throw `'${c}' not allowed in base32`;
 		p = c.match(/=/g).length; return '';
 	}).join('');
