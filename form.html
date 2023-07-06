@@ -10,7 +10,8 @@ input:invalid ~ #error:empty::after {
 }
 #code { font-family: monospace; font-size: 250%; letter-spacing: .15em }
 #code:empty::before { content: 'XXXXXX' }
-input[type=password], input[type=text] {
+input { max-width: 100% }
+input#user, input#key {
 	width: 100%; max-width: 25em; min-width: 5em; box-sizing: border-box
 }
 input:not([type=checkbox]) { display: block; font-size: 110% }
@@ -21,7 +22,7 @@ script[data-visible] {
 </style>
 <iframe name=fram style=display:none></iframe>
 <form target=fram>
-    <label>User<input type=text></label>
+    <label>User<input id=user></label>
     <div>
 	<label for=key>Shared Key</label>
 	<label><input type=checkbox id=show>show</label>
