@@ -6,32 +6,31 @@
 input:invalid { background-color: red; color: pink }
 #error { color: red; font-weight: bold; height: 1em }
 input:invalid ~ #error:empty::after {
-	content: 'ERROR: only letters and digits from 2 to 7 allowed';
+	content: 'ERROR: only letters and digits from 2 to 7 allowed'
 }
-#code { font-family: monospace; font-size: 18pt; letter-spacing: .15em }
+#code { font-family: monospace; font-size: 250%; letter-spacing: .15em }
 #code:empty::before { content: 'XXXXXX' }
-form > * { display: block; margin-bottom: 1em }
 input[type=password], input[type=text] {
 	width: 100%; max-width: 25em; min-width: 5em; box-sizing: border-box
 }
-input:not([type=checkbox]) {
-	display: block; font-size: 110%; margin-top: .2em;
-}
+input:not([type=checkbox]) { display: block; font-size: 110% }
+form > * { display: block; margin-bottom: 1em }
 script[data-visible] {
 	display: block; white-space: pre; font-family: monospace;
 }
 </style>
 <iframe name=fram style=display:none></iframe>
 <form target=fram>
-	<label>User
-		<input type=text>
-	</label>
-	<label for=key>Shared Key&nbsp;&nbsp;<input type=checkbox id=show>show
-		<input id=key autocomplete=current-password type=password pattern="[a-zA-Z2-7\s]+"><div id=error></div>
-	</label>
-	<div id=code></div>
-	<input type=button id=generate value="Generate TOTP (and copy it to clipboard)">
-	<input type=submit value="Save the key (with the browser's password manager)">
+    <label>User<input type=text></label>
+    <div>
+	<label for=key>Shared Key</label>
+	<label><input type=checkbox id=show>show</label>
+	<input id=key autocomplete=current-password type=password pattern="[a-zA-Z2-7\s]+">
+	<div id=error></div>
+    </div>
+    <div id=code></div>
+    <input type=button id=generate value="Generate TOTP (and copy it to clipboard)">
+    <input type=submit value="Save the key (with the browser's password manager)">
 </form>
 The TOTP shared key should be in base32 format,
 eg <code>TK7P33KPE527ZTOX</code> (github) or <code>opid zgaw quda ip7q tj3z izo7 oemp t7dm</code> (google).
