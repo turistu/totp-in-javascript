@@ -10,8 +10,9 @@ function generate_code(e){
 }
 qs('#generate').onclick = generate_code;
 qs('#key').oninput = function(e){
-	if(this != document.activeElement) return generate_code(e)
-	else { this.setCustomValidity(''); qs('#error').innerHTML = '' }
+	this.setCustomValidity('');
+	qs('#error').innerHTML = ''
+	if(this != document.activeElement) generate_code(e)
 }
 qs('#show').checked = false;
 qs('#show').onchange = function(e){
