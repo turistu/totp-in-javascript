@@ -1,0 +1,19 @@
+name: make & push html
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  push-html:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: make
+      - uses: turistu/odds-n-ends/push-html@main
+        with:
+          token: ${{secrets.PAT}}
+          src: totp.html
+      - uses: actions/upload-artifact@v3
+        if: success() || failure()
+        with:
+          path: ./*.xpi
+          name: xpi-extension
