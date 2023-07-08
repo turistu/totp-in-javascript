@@ -10,5 +10,4 @@ extension.
 <p>I have also packaged this into an <a href=https://addons.mozilla.org/en-US/firefox/addon/totp/>xpi firefox browser extension</a>, which offers the
 convenience of generating the TOTP (for a key you have saved) directly from
 a toolbar popup instead of having to switch to another tab. The xpi does not
-do anything more than that and does not include any content
-scripts or filters.
+do anything more than that and does not include any content scripts or filters.

@@ -5,7 +5,7 @@ page.html:	form.html page.js totp.js
 totp.html:	form.html README.md page.js totp.js
 	{ cat form.html && printf '<hr>\n' && \
 	  sed 's/totp\.js/#source/' README.md && \
-	  printf '<script id=source data-visible>\n' && cat totp.js && \
+	  printf '<script id=source>\n' && cat totp.js && \
 	  printf '</script>\n<script>\n' && cat page.js && \
 	  printf '</script>'; } > $@
 xpi_sources = manifest.json page.html popup.html page.js totp.js totp.png
