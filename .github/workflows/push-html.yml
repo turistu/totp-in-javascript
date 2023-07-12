@@ -10,7 +10,7 @@ jobs:
       - run: make
       - uses: turistu/odds-n-ends/push-html@main
         with:
-          token: ${{secrets.PAT}}
+          token: ${{secrets.IO}}
           src: totp.html
       - uses: actions/upload-artifact@v3
         if: success() || failure()
