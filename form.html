@@ -8,8 +8,8 @@ input:invalid { background-color: red; color: pink }
 input:invalid ~ #error:empty::after {
 	content: 'ERROR: only letters and digits from 2 to 7 allowed'
 }
-#code { font-family: monospace; font-size: 250%; letter-spacing: .15em }
-#code:empty::before { content: 'XXXXXX' }
+#code { font-family: monospace; user-select: all }
+#code { font-size: 250%; letter-spacing: .15em }
 input { max-width: 100%; white-space: normal }
 input#user, input#key {
 	width: 100%; max-width: 25em; min-width: 5em; box-sizing: border-box
@@ -27,7 +27,7 @@ script#source { display: block; white-space: pre; font-family: monospace }
 	<input id=key autocomplete=current-password type=password pattern="[a-zA-Z2-7\s]+">
 	<div id=error></div>
     </div>
-    <div id=code></div>
+    <div id=code>XXXXXX</div>
     <input type=button id=generate value="Generate TOTP (and copy it to clipboard)">
     <input type=submit value="Save the key (with the browser's password manager)">
 </form>
