@@ -20,3 +20,8 @@ clean:
 install:	totp.xpi
 	firefox totp.xpi
 page.html totp.html totp.xpi:	Makefile
+
+totp-local-storage.html:	no-submit.html page.js totp.js
+	{ cat no-submit.html && \
+	  printf '<script>\n' && cat totp.js page.js && \
+	  printf '</script>'; } > $@
