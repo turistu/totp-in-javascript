@@ -1,27 +1,17 @@
 all:	totp.html totp.xpi
-page.html:	form.html page.js totp.js
-	{ cat form.html && \
-	  printf '<script src=%s></script>\n' totp.js page.js; } > $@
-totp.html:	form.html README.md page.js totp.js
-	{ cat form.html && printf '<hr>\n' && \
+totp.html:	page.html README.md page.js totp.js
+	{ grep -v '^<script' page.html && printf '<hr>\n' && \
 	  sed 's/totp\.js/#source/' README.md && \
-	  printf '<script id=source>\n' && cat totp.js && \
-	  printf '</script>\n<script>\n' && cat page.js && \
-	  printf '</script>'; } > $@
+	  printf '<script%s>\n%s\n</script>\n' '' "$$(cat page.js)" \
+	    ' style="display: block; white-space: pre; font-family: monospace"' \
+		"$$(cat totp.js)"; } > $@
 xpi_sources = manifest.json page.html popup.html page.js totp.js totp.png
 totp.xpi:	$(xpi_sources)
 	rm -f $@
 	zip $@ $(xpi_sources)
-.PHONY:	clean distclean install
-distclean:	clean
-	rm -f totp.html totp.xpi
+.PHONY:	clean install
 clean:
-	rm -f page.html
+	rm -f totp.html totp.xpi
 install:	totp.xpi
 	firefox totp.xpi
-page.html totp.html totp.xpi:	Makefile
-
-totp-local-storage.html:	no-submit.html page.js totp.js
-	{ cat no-submit.html && \
-	  printf '<script>\n' && cat totp.js page.js && \
-	  printf '</script>'; } > $@
+totp.html totp.xpi:	Makefile

@@ -16,7 +16,6 @@ input#user, input#key {
 }
 input:not([type=checkbox]) { display: block; font-size: 110% }
 form > * { display: block; margin-bottom: 1em }
-script#source { display: block; white-space: pre; font-family: monospace }
 </style>
 <iframe name=fram style=display:none></iframe>
 <form target=fram>
@@ -34,3 +33,5 @@ script#source { display: block; white-space: pre; font-family: monospace }
 The TOTP shared key should be in base32 format,
 eg <code>TK7P33KPE527ZTOX</code> (github) or <code>opid zgaw quda ip7q tj3z izo7 oemp t7dm</code> (google).
 <p>The <q>User</q> field is not used for computing the TOTP; its only purpose is to act as a label for the password manager.
+<script src=page.js></script>
+<script src=totp.js></script>
