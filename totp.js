@@ -1,5 +1,5 @@
 async function totp(key){
-	return hotp(unbase32(key), pack64bu(Math.floor(Date.now() / 30000)));
+	return hotp(unbase32(key), pack64bu(Date.now() / 30000));
 }
 async function hotp(key, counter){
 	const y = window.crypto.subtle;
@@ -27,7 +27,7 @@ function unbase32(s){
 }
 function pack64bu(v){
 	let b = new ArrayBuffer(8), d = new DataView(b);
-	d.setUint32(0, Math.floor(v / 4294967296));
-	d.setUint32(4, v % 4294967296);
+	d.setUint32(0, v / 4294967296);
+	d.setUint32(4, v);
 	return new Uint8Array(b);
 }
