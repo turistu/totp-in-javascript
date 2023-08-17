@@ -11,15 +11,14 @@ input:invalid ~ #error:empty::after {
 #code { font-family: monospace; user-select: all }
 #code { font-size: 250%; letter-spacing: .15em }
 input { max-width: 100%; white-space: normal }
-input#user, input#key {
+[autocomplete] {
 	width: 100%; max-width: 25em; min-width: 5em; box-sizing: border-box
 }
 input:not([type=checkbox]) { display: block; font-size: 110% }
 form > * { display: block; margin-bottom: 1em }
 </style>
-<iframe name=fram style=display:none></iframe>
-<form target=fram>
-    <label>User<input id=user></label>
+<form>
+    <label>User<input autocomplete=username></label>
     <div>
 	<label for=key>Shared Key</label>
 	<label><input type=checkbox id=show>show</label>
@@ -33,5 +32,6 @@ form > * { display: block; margin-bottom: 1em }
 The TOTP shared key should be in base32 format,
 eg <code>TK7P33KPE527ZTOX</code> (github) or <code>opid zgaw quda ip7q tj3z izo7 oemp t7dm</code> (google).
 <p>The <q>User</q> field is not used for computing the TOTP; its only purpose is to act as a label for the password manager.
+<p>If the <q>Save..</q> button causes the form to clear without poping up the <q>Save login/password</q> dialog, go back one page with Alt-Left and check if your browser's settings allow the saving of passwords for the domain and protocol this page was served on.
 <script src=page.js></script>
 <script src=totp.js></script>
