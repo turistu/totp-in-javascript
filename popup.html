@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
 <title>TOTP</title>
 <meta charset=utf-8>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <style>
 input, p { display: block; margin: .5em }
-input[type=password] { display: none }
-#code { user-select: all }
+[type=password] { display: none }
 a { float: right }
+[title]::after { margin-left: .5ex; content: attr(title); font-size: 70%; color: red }
+[title^=copied]::after { color: green }
 </style>
 <form>
 <input>
