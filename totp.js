@@ -29,5 +29,5 @@ function pack64bu(v){
 	let b = new ArrayBuffer(8), d = new DataView(b);
 	d.setUint32(0, v / 4294967296);
 	d.setUint32(4, v);
-	return new Uint8Array(b);
+	return b;
 }
