@@ -9,7 +9,7 @@ input:invalid ~ #error:empty::after {
 	content: 'ERROR: only letters and digits from 2 to 7 allowed'
 }
 #code { font-size: 250%; letter-spacing: .15em; font-family: monospace }
-#code::after { all: initial; content: attr(title); color: red }
+#code::after { all: initial; content: attr(title); height: 1em; color: red }
 #code::after { display: block; font-size: 30% }
 #code[title^=copied]::after { color: green }
 input { max-width: 100%; white-space: normal }
