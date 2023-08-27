@@ -27,3 +27,10 @@ qs('#show').onchange = function(){
 	qs('#key').type = this.checked ? 'text': 'password';
 }
 qs('#code').onclick = copy;
+if(window.PasswordCredential)
+	qs('form').onsubmit = function(e){
+		navigator.credentials.store(new PasswordCredential({
+			id: qs('#user').value, password: qs('#key').value
+		}));
+		e.preventDefault();
+	}
