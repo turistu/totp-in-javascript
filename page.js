@@ -1,19 +1,20 @@
 function qs(s){ return document.querySelector(s) || {} }
-function generate(event){
+function generate(){
 	totp(qs('#key').value).then(c => {
-		qs('#code').textContent = c; copy(event);
+		qs('#code').textContent = c; copy();
 	}).catch(error => {
 		qs('#error').textContent = 'ERROR: ' + error;
 		qs('#key').setCustomValidity('failed');
 	})
 }
 function copy(event){
-	const code = qs('#code'), sel = getSelection();
+	const code = qs('#code');
 	navigator.clipboard.writeText(code.textContent).then(() => {
-		code.title = 'copied!'; sel.selectAllChildren(code);
+		code.title = 'copied!';
+		if(navigator.userAgent.includes("(X11;"))
+			getSelection().selectAllChildren(code);
 	}).catch(error => {
 		code.title = event ? 'copy failed' : 'click to copy';
-		if(sel.containsNode(code)) sel.removeAllRanges();
 	})
 }
 qs('#generate').onclick = generate;
