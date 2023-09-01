@@ -3,6 +3,6 @@
 	"name": "TOTP",
 	"version": "1.2.3",
 	"browser_specific_settings": { "gecko": { "id": "totp@ohzd.od" } },
-	"browser_action": { "default_popup": "popup.html" },
+	"browser_action": { "default_popup": "form.html#popup" },
 	"icons": { "128": "totp.png" }
 }
