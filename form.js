@@ -1,9 +1,11 @@
 function qs(s){ return document.querySelector(s) }
-function set_error(s){ qs('#key').setCustomValidity(s); qs('#error').value = s }
 function generate(){
 	totp(qs('#key').value).then(c => {
 		qs('#code').value = c; copy('click to copy');
-	}).catch(set_error);
+	}).catch(e => {
+		qs('#key').setCustomValidity(e);
+		qs('#error').value = 'ERROR: ' + e;
+	})
 }
 function copy(emsg){
 	navigator.clipboard.writeText(qs('#code').value).then(() => {
@@ -14,7 +16,9 @@ function copy(emsg){
 }
 qs('#generate').onclick = generate;
 qs('#key').oninput = function(){
-	set_error('');
+	this.setCustomValidity('');
+	qs('#error').value = this.checkValidity() ?
+		'' : 'ERROR: only A..Z, 2..7 and spaces allowed';
 	if(this !== document.activeElement) generate();
 }
 qs('#show').checked = false;
