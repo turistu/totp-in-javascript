@@ -16,12 +16,12 @@ function fmt(base, width, num){
 	return num.toString(base).padStart(width, '0')
 }
 function unbase32(s){
-	const t = s.toLowerCase().match(/\S/g)?.map(c => {
+	const t = (s.toLowerCase().match(/\S/g)||[]).map(c => {
 		const i = 'abcdefghijklmnopqrstuvwxyz234567'.indexOf(c);
 		if(i < 0) throw `bad char '${c}' in key`;
 		return fmt(2, 5, i);
 	}).join('');
-	if(!t || t.length < 8) throw 'key too short';
+	if(t.length < 8) throw 'key too short';
 	return new Uint8Array(t.match(/.{8}/g).map(d => parseInt(d, 2)));
 }
 function pack64bu(v){
