@@ -15,7 +15,7 @@ button { max-width: max-content }
 #add { display: none }
 #show { width: unset }
 
-.popup :not(#user, #code), .popup ~ * { display: none }
+.popup *, .popup ~ * { display: none }
 .popup #user, .popup #code { all: revert }
 .popup #user { display: block; margin: .5em 0 }
 .popup #code::after { font-size: 80% }
