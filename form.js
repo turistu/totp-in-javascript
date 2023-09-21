@@ -1,18 +1,22 @@
 function qs(s){ return document.querySelector(s) }
-function generate(){
-	totp(qs('#key').value).then(c => {
-		qs('#code').value = c; copy('click to copy');
-	}).catch(e => {
+async function generate(){
+	try {
+		qs('#code').value = await totp(qs('#key').value);
+		copy('click to copy');
+	}catch(e){
 		qs('#key').setCustomValidity(e);
 		qs('#error').value = 'ERROR: ' + e;
-	})
+	}
 }
-function copy(emsg){
-	navigator.clipboard.writeText(qs('#code').value).then(() => {
-		qs('#code').title = 'copied!';
+async function copy(emsg){
+	try {
+		await navigator.clipboard.writeText(qs('#code').value);
 		if(navigator.userAgent.includes("(X11;"))
 			getSelection().selectAllChildren(qs('#code'));
-	}).catch(e => qs('#code').title = emsg);
+		qs('#code').title = 'copied!';
+	}catch(e){
+		qs('#code').title = emsg;
+	}
 }
 qs('#generate').onclick = generate;
 qs('#key').oninput = function(){
