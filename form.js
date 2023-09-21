@@ -27,3 +27,4 @@ qs('#show').onchange = function(){
 }
 qs('#code').onclick = e => copy('copy failed');
 qs('form').className = document.location.hash.substr(1);
+qs('form').onsubmit = e => e.preventDefault();
