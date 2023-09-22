@@ -2,7 +2,7 @@
 <html lang=en>
 <title>a simple TOTP generator</title>
 <meta charset=utf-8>
-<meta name=viewport content="width=device-width, initial-scale=1">
+<meta name=viewport content=width=device-width,initial-scale=1>
 <style>
 #error { font-weight: bold; color: red; display: block; height: 1em }
 #key:invalid { background-color: red; color: pink }
@@ -10,11 +10,10 @@
 #code::after { all: initial; content: ' ' attr(title); color: red }
 #code[title^=copied]::after { color: green }
 
-input, button { box-sizing: border-box; width: 100%; font-size: inherit }
-input { max-width: 25em }
+input, button { font: inherit }
+#user, #key { box-sizing: border-box; width: 100%; max-width: 25em }
 button { max-width: max-content }
 #add { display: none }
-#show { width: unset }
 
 .popup *, .popup ~ * { display: none }
 .popup #user, .popup #code { all: revert }
