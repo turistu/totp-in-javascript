@@ -4,36 +4,36 @@
 <meta charset=utf-8>
 <meta name=viewport content=width=device-width,initial-scale=1>
 <style>
-#error { font-weight: bold; color: red; display: block; height: 1em }
-#key:invalid { background-color: red; color: pink }
-#code { font-family: monospace; font-size: 250%; letter-spacing: .15em }
-#code::after { all: initial; content: ' ' attr(title); color: red }
-#code[title^=copied]::after { color: green }
+#ERROR { font-weight: bold; color: red; display: block; height: 1em }
+#KEY:invalid { background-color: red; color: pink }
+#CODE { font-family: monospace; font-size: 250%; letter-spacing: .15em }
+#CODE::after { all: initial; content: ' ' attr(title); color: red }
+#CODE[title^=copied]::after { color: green }
 
 input, button { font: inherit }
-#user, #key { box-sizing: border-box; width: 100%; max-width: 25em }
+#USER, #KEY { box-sizing: border-box; width: 100%; max-width: 25em }
 button { max-width: max-content }
-#add { display: none }
+#ADD { display: none }
 
 .popup *, .popup ~ * { display: none }
-.popup #user, .popup #code { all: revert }
-.popup #user { display: block; margin: .5em 0 }
-.popup #code::after { font-size: 80% }
-.popup #add { display: inline; float: right }
+.popup #USER, .popup #CODE { all: revert }
+.popup #USER { display: block; margin: .5em 0 }
+.popup #CODE::after { font-size: 80% }
+.popup #ADD { display: inline; float: right }
 </style>
 
-<form>
-  <label for=user>User</label><br>
-  <input id=user size=24 autocomplete=username>
+<form id=FORM>
+  <label for=USER>User</label><br>
+  <input id=USER size=24 autocomplete=username>
   <p>
-    <label for=key>Shared Key</label>
-    <label><input type=checkbox id=show>show</label><br>
-    <input id=key size=24 autocomplete=current-password type=password pattern="[a-zA-Z2-7\s]+">
-    <output for=key id=error></output>
+    <label for=KEY>Shared Key</label>
+    <label><input type=checkbox id=SHOW>show</label><br>
+    <input id=KEY size=24 autocomplete=current-password type=password pattern="[a-zA-Z2-7\s]+">
+    <output for=KEY id=ERROR></output>
   </p>
-  <output for=key id=code>XXXXXX</output>
-  <a id=add href target=_blank>add key</a>
-  <p><button type=button id=generate>Generate TOTP (and copy it to clipboard)</button>
+  <output for=KEY id=CODE>XXXXXX</output>
+  <a id=ADD href target=_blank>add key</a>
+  <p><button type=button id=GENERATE>Generate TOTP (and copy it to clipboard)</button>
   <p><button>Save the key (with the browser's password manager)</button>
 </form>
 
