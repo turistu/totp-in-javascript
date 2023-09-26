@@ -5,7 +5,7 @@ async function generate(){
 async function copy(emsg){
 	try {
 		await navigator.clipboard.writeText(CODE.value);
-		if(navigator.userAgent.includes("(X11;"))
+		if(!matchMedia('(pointer:coarse)').matches)
 			getSelection().selectAllChildren(CODE);
 		CODE.title = 'copied!';
 	}catch(e){ CODE.title = emsg }
