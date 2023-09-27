@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "TOTP",
-	"version": "1.2.5",
+	"version": "1.2.6",
 	"browser_specific_settings": {
 		"gecko": {
 			"id": "totp@ohzd.od",
