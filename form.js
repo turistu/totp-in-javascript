@@ -1,6 +1,6 @@
 async function generate(){
 	try { CODE.value = await totp(KEY.value); copy('click to copy') }
-	catch(e){ KEY.setCustomValidity(ERROR.value = 'ERROR: ' + e) }
+	catch(e){ KEY.setCustomValidity(ERROR.value = e) }
 }
 async function copy(emsg){
 	try {
@@ -14,7 +14,7 @@ GENERATE.onclick = generate;
 KEY.oninput = function(){
 	KEY.setCustomValidity('');
 	ERROR.value = KEY.checkValidity() ?  '' :
-		'ERROR: only A..Z, 2..7 and spaces allowed';
+		Error('only A..Z, 2..7 and spaces allowed');
 	if(KEY !== document.activeElement) generate();
 }
 SHOW.checked = false;

@@ -3,7 +3,7 @@ async function totp(key, secs = 30, digits = 6){
 }
 async function hotp(key, counter, digits){
 	let y = window.crypto.subtle;
-	if(!y) throw 'no window.crypto.subtle object available';
+	if(!y) throw Error('no window.crypto.subtle object available');
 	let k = await y.importKey('raw', key, {name: 'HMAC', hash: 'SHA-1'}, false, ['sign']);
 	return hotp_truncate(await y.sign('HMAC', k, counter), digits);
 }
@@ -18,10 +18,10 @@ function fmt(base, width, num){
 function unbase32(s){
 	let t = (s.toLowerCase().match(/\S/g)||[]).map(c => {
 		let i = 'abcdefghijklmnopqrstuvwxyz234567'.indexOf(c);
-		if(i < 0) throw `bad char '${c}' in key`;
+		if(i < 0) throw Error(`bad char '${c}' in key`);
 		return fmt(2, 5, i);
 	}).join('');
-	if(t.length < 8) throw 'key too short';
+	if(t.length < 8) throw Error('key too short');
 	return new Uint8Array(t.match(/.{8}/g).map(d => parseInt(d, 2)));
 }
 function pack64bu(v){
