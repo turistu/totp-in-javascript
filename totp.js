@@ -2,7 +2,7 @@ async function totp(key, secs = 30, digits = 6){
 	return hotp(unbase32(key), pack64bu(Date.now() / 1000 / secs), digits);
 }
 async function hotp(key, counter, digits){
-	let y = window.crypto.subtle;
+	let y = self.crypto.subtle;
 	if(!y) throw Error('no window.crypto.subtle object available');
 	let k = await y.importKey('raw', key, {name: 'HMAC', hash: 'SHA-1'}, false, ['sign']);
 	return hotp_truncate(await y.sign('HMAC', k, counter), digits);
