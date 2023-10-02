@@ -3,7 +3,7 @@ async function totp(key, secs = 30, digits = 6){
 }
 async function hotp(key, counter, digits){
 	let y = self.crypto.subtle;
-	if(!y) throw Error('no window.crypto.subtle object available');
+	if(!y) throw Error('no self.crypto.subtle object available');
 	let k = await y.importKey('raw', key, {name: 'HMAC', hash: 'SHA-1'}, false, ['sign']);
 	return hotp_truncate(await y.sign('HMAC', k, counter), digits);
 }
