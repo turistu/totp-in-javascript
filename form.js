@@ -1,11 +1,11 @@
 async function generate(){
-	try { CODE.value = await totp(KEY.value); copy('click to copy') }
+	try { CODE.value = await totp(KEY.value); copy('click to copy', true) }
 	catch(e){ KEY.setCustomValidity(ERROR.value = e) }
 }
-async function copy(emsg){
+async function copy(emsg, select){
 	try {
 		await navigator.clipboard.writeText(CODE.value);
-		if(!matchMedia('(pointer:coarse)').matches)
+		if(select && !matchMedia('(pointer:coarse)').matches)
 			getSelection().selectAllChildren(CODE);
 		CODE.title = 'copied!';
 	}catch(e){ CODE.title = emsg }
