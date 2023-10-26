@@ -41,6 +41,7 @@ button { max-width: max-content }
 
 <p>The <q>User</q> field is not used for computing the TOTP; its only purpose is to act as a label for the password manager.
 
-<p>If the <q>Save..</q> button does not pop up the <q>Save login/password</q> dialog, look for a key-like icon in the address bar or password input box and click on it. If there's no such icon, check if your browser's settings prevent it from saving passwords on this page.
+<p>If the <q>Save..</q> button does not pop up the <q>Save login/password</q> dialog, look for a key-like icon in the address bar or password input box and click on it.
+<p>Saving keys will not work if you have disabled <q>Ask to save logins and passwords for websites</q> in <code>about:preferences#privacy</code> in firefox, or if you're accessing this page via <code>file://</code> in chrome.
 <script src=form.js></script>
 <script src=totp.js></script>
