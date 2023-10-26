@@ -19,8 +19,11 @@ if(window.PasswordCredential){
 // called from anything but an event handler
 if(!navigator.clipboard)
 	copy = function(emsg){
-		getSelection().selectAllChildren(CODE);
-		CODE.title = document.execCommand('copy') ? 'copied!' : emsg;
-		if(matchMedia('(pointer:coarse)').matches)
-			getSelection().removeAllRanges();
+		try {
+			getSelection().selectAllChildren(CODE);
+			CODE.title = document.execCommand('copy') ?
+				'copied!' : emsg;
+			if(matchMedia('(pointer:coarse)').matches)
+				getSelection().removeAllRanges();
+		}catch(e){ CODE.title = emsg }
 	};
