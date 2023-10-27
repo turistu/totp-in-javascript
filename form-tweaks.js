@@ -23,7 +23,6 @@ if(!navigator.clipboard)
 			getSelection().selectAllChildren(CODE);
 			CODE.title = document.execCommand('copy') ?
 				'copied!' : emsg;
-			if(matchMedia('(pointer:coarse)').matches)
-				getSelection().removeAllRanges();
+			if(!select_is_ok()) getSelection().removeAllRanges();
 		}catch(e){ CODE.title = emsg }
 	};
