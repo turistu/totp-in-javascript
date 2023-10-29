@@ -2,19 +2,21 @@ async function generate(){
 	try { CODE.value = await totp(KEY.value); copy('click to copy', true) }
 	catch(e){ KEY.setCustomValidity(ERROR.value = e) }
 }
-function select_is_ok(){
-	if(matchMedia('(pointer:coarse)').matches)
-		return false; // touchscreen
-	if(/\(X11;.* rv:1[2-9][0-9].* Gecko\//.test(navigator.userAgent))
-		return false; // pastejack bug 1855345 half-fix broke it
-	return true;
+function touchscreen(){
+	return matchMedia('(pointer:coarse)').matches
+}
+function select_is_broken(){
+	let m = /\(X11;.* rv:(\d+).* Gecko\//.exec(navigator.userAgent);
+	return m && m[1] >= 121; // half-fix for pastejack bug 1855345 broke it
 }
 async function copy(emsg, select){
 	try {
 		await navigator.clipboard.writeText(CODE.value);
-		if(select && select_is_ok())
-			getSelection().selectAllChildren(CODE);
 		CODE.title = 'copied!';
+		if(select && !touchscreen()){
+			if(select_is_broken()) CODE.title = 'copied (for ctrl-V)';
+			else getSelection().selectAllChildren(CODE);
+		}
 	}catch(e){ CODE.title = emsg }
 }
 GENERATE.onclick = generate;

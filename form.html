@@ -8,7 +8,7 @@
 #KEY:invalid { background-color: red; color: pink }
 #CODE { font: 250% monospace; letter-spacing: .15em; user-select: all }
 #CODE::after { all: initial; content: ' ' attr(title); color: red; pointer-events: none }
-#CODE[title^=copied]::after { color: green }
+#CODE[title^="copied!"]::after { color: green }
 
 input, button { font: inherit }
 #USER, #KEY { box-sizing: border-box; width: 100%; max-width: 25em }
@@ -24,11 +24,11 @@ button { max-width: max-content }
 
 <form id=FORM>
   <label for=USER>User</label><br>
-  <input id=USER size=24 autocomplete=username>
+  <input id=USER size=26 autocomplete=username>
   <p>
     <label for=KEY>Shared Key</label>
     <label><input type=checkbox id=SHOW>show</label><br>
-    <input id=KEY size=24 autocomplete=current-password type=password pattern="[a-zA-Z2-7\s]+">
+    <input id=KEY size=26 autocomplete=current-password type=password pattern="[a-zA-Z2-7\s]+">
     <output for=KEY id=ERROR></output>
   </p>
   <output for=KEY id=CODE>XXXXXX</output>
