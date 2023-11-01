@@ -7,7 +7,7 @@ function touchscreen(){
 }
 function select_is_broken(){
 	let m = /\(X11;.* rv:(\d+).* Gecko\//.exec(navigator.userAgent);
-	return m && m[1] >= 121; // half-fix for pastejack bug 1855345 broke it
+	return m && m[1] >= 120; // half-fix for pastejack bug 1855345 broke it
 }
 async function copy(emsg, select){
 	try {
