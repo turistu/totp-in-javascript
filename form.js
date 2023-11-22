@@ -5,9 +5,9 @@ async function generate(){
 function touchscreen(){
 	return matchMedia('(pointer:coarse)').matches
 }
+// half-fix for pastejack bug 1855345 broke it
 function select_is_broken(){
-	let m = /\(X11;.* rv:(\d+).* Gecko\//.exec(navigator.userAgent);
-	return m && m[1] >= 120; // half-fix for pastejack bug 1855345 broke it
+	return /\(X11;.* Gecko\//.exec(navigator.userAgent);
 }
 async function copy(emsg, select){
 	try {
