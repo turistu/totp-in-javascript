@@ -6,13 +6,13 @@ jobs:
   push-html:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: make
       - uses: turistu/odds-n-ends/push-html@main
         with:
-          token: ${{secrets.IO}}
+          token: ${{secrets.PUSH_HTML}}
           src: totp.html
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: success() || failure()
         with:
           path: ./*.xpi
