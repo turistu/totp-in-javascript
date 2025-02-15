@@ -4,7 +4,11 @@
 
 set -e
 
+# strip lines starting with "<script" from form.html output
 grep -v '^<script' form.html && printf '<hr>\n'
+# replace totp.js references with #source in README.md output
 sed 's/totp\.js/#source/' README.md
-printf '<script%s>\n%s\n</script>\n' '' "$(cat form.js form-tweaks.js)" \
-           ' id=source style="display: block; white-space: pre; font-family: monospace; overflow: auto"' "$(cat totp.js)"
+# insert form.js form-tweaks.js as scripts, and totp.js as listing
+printf '<script>\n%s\n</script>\n' "$(cat form.js form-tweaks.js)"
+printf '<script %s>\n%s\n</script>\n' \
+            'id=source style="display: block; white-space: pre; font-family: monospace; overflow: auto"' "$(cat totp.js)"
