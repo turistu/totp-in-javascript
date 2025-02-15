@@ -30,4 +30,6 @@ SHOW.checked = false;
 SHOW.onchange = e => KEY.type = SHOW.checked ? 'text': 'password';
 CODE.onclick = e => copy('copy failed');
 FORM.onsubmit = e => e.preventDefault();
+// add class="popup" when html code is called from panel button
+// view-source:moz-extension://xxxxxxxx/form.html#popup
 FORM.className = document.location.hash.substr(1);
