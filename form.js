@@ -10,6 +10,7 @@ function select_is_broken(){
 	return /\(X11;.* Gecko\//.exec(navigator.userAgent);
 }
 async function copy(emsg, select){
+	if(CODE.value === '') return
 	try {
 		await navigator.clipboard.writeText(CODE.value);
 		CODE.title = 'copied!';
