@@ -29,7 +29,7 @@ button { max-width: max-content }
   <p>
     <label for=KEY>Shared Key</label>
     <label><input type=checkbox id=SHOW>show</label><br>
-    <input id=KEY size=27 autocomplete=current-password type=password pattern="[a-zA-Z2-7\s]+">
+    <input id=KEY size=27 autocomplete=current-password type=password pattern="(\b[a-z]+=\S*|[a-zA-Z2-7\s])+">
     <output for=KEY id=ERROR></output>
   </p>
   <output for=KEY id=CODE></output>

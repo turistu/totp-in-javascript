@@ -1,14 +1,18 @@
-async function totp(key, secs = 30, digits = 6){
-	return hotp(unbase32(key), pack64bu(Date.now() / 1000 / secs), digits);
+async function totp(key){
+	let a = {};
+	a.key = key.replace(/\b(\w+)=(\S+)/g, (m, k, v) => (a[k] = v, ""));
+	return hotp(a);
 }
-async function hotp(key, counter, digits){
+async function hotp({key, digits = 6, hash = 'SHA-1', secs = 30,
+		counter = Date.now() / 1000 / secs,
+		rkey = unbase32(key), rcounter = b64u(counter)}){
 	let y = self.crypto.subtle;
 	if(!y) throw Error('no self.crypto.subtle object available');
-	let k = await y.importKey('raw', key, {name: 'HMAC', hash: 'SHA-1'}, false, ['sign']);
-	return hotp_truncate(await y.sign('HMAC', k, counter), digits);
+	let k = await y.importKey('raw', rkey, {name: 'HMAC', hash}, false, ['sign']);
+	return hotp_truncate(await y.sign('HMAC', k, rcounter), digits);
 }
 function hotp_truncate(buf, digits){
-	let a = new Uint8Array(buf), i = a[19] & 0xf;
+	let a = new Uint8Array(buf), i = a[a.length - 1] & 0xf;
 	return fmt(10, digits, ((a[i]&0x7f)<<24 | a[i+1]<<16 | a[i+2]<<8 | a[i+3]) % 10**digits);
 }
 
@@ -24,7 +28,7 @@ function unbase32(s){
 	if(t.length < 8) throw Error('key too short');
 	return new Uint8Array(t.match(/.{8}/g).map(d => parseInt(d, 2)));
 }
-function pack64bu(v){
+function b64u(v){
 	let b = new ArrayBuffer(8), d = new DataView(b);
 	d.setUint32(0, v / 2**32);
 	d.setUint32(4, v);
