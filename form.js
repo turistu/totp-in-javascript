@@ -24,7 +24,7 @@ GENERATE.onclick = generate;
 KEY.oninput = function(){
 	KEY.setCustomValidity('');
 	ERROR.value = KEY.checkValidity() ?  '' :
-		Error('only A..Z, 2..7 and spaces allowed');
+		Error('only A..Z, 2..7, spaces, or name=val options allowed');
 	if(KEY !== document.activeElement) generate();
 }
 SHOW.checked = false;

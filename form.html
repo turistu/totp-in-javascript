@@ -42,7 +42,11 @@ button { max-width: max-content }
 
 <p>The <q>User</q> field is not used for computing the TOTP; its only purpose is to act as a label for the password manager.
 
-<p>If the <q>Save..</q> button does not pop up the <q>Save login/password</q> dialog, look for a key-like icon in the address bar or password input box and click on it.
+<p>If the <q>Save..</q> button does not open the <q>Save login/password</q> dialog, look for a key-like icon in the address bar or password input box and click on it.
+
 <p>Saving keys will not work if you have disabled <q>Ask to save logins and passwords for websites</q> in <code>about:preferences#privacy</code> in firefox, or if you're accessing this page via <code>file://</code> in chrome.
+
+<p>If the website is using other parameters than the default SHA-1 hash / 30 secs / 6 digits, put them in the <q>Shared Key</q> field (either before or after the key) as in <code>digits=8 hash=SHA-512 secs=40 base32key..</code>.
+
 <script src=form.js></script>
 <script src=totp.js></script>
